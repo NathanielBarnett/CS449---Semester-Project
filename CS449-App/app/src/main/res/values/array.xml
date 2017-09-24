@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="weight_volume_units">
+        <item>tsp.</item>
+        <item>tbsp.</item>
+        <item>oz.</item>
+        <item>Cup</item>
+        <item>Pint</item>
+        <item>Quart</item>
+        <item>Gallon</item>
+        <item>Bacon</item>
+    </string-array>
+
+</resources>

@@ -10,7 +10,7 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="fill_parent"
+        android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
@@ -21,9 +21,9 @@
         android:layout_marginRight="16dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="-2dp"
         app:layout_constraintHorizontal_bias="0.0"
-        tools:layout_editor_absoluteX="-4dp" />
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
 
     <EditText
         android:id="@+id/starting_val"
@@ -82,6 +82,18 @@
         android:layout_marginLeft="27dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginStart="27dp" />
+
+    <Spinner
+        android:id="@+id/starting_val_spinner"
+        android:layout_width="129dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@+id/starting_val"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="175dp"/>
 
 </android.support.constraint.ConstraintLayout>
 
