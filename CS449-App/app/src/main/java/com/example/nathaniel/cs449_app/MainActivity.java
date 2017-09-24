@@ -51,14 +51,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
         switch (item.getItemId()) {
-            case R.id.menu_button:
-                // User chose the "Menu" item, show other conversion menu...
+            case R.id.temp_button:
+                // User chose the "Temp Menu" item, show other conversion menu...
+               Intent temp_intent = new Intent(this, TempActivity.class);
+                startActivity(temp_intent);
                 return true;
 
             case R.id.about_button:
                 // User chose the "About" item, show about info...
-                Intent intent = new Intent(this, AboutActivity.class);
+                intent = new Intent(this, AboutActivity.class);
                 startActivity(intent);
                 return true;
 
@@ -72,8 +75,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     public void onItemSelected(AdapterView<?> parent, View view,
                                int pos, long id) {
-        // An item was selected. You can retrieve the selected item using
+        // An item was selected. Retrieve the selected item using
         // parent.getItemAtPosition(pos)
+        // Identical switch cases are simply for proof of concept.
         TextView result_string;
         switch (pos) {
             case 0: // first option in spinner
