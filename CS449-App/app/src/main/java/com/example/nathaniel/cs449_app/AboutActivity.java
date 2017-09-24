@@ -2,6 +2,7 @@ package com.example.nathaniel.cs449_app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -15,8 +16,14 @@ public class AboutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_activity);
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(myToolbar);
+        Toolbar aboutToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(aboutToolbar);
+
+        // get a support action bar corresponding to this toolbar
+        ActionBar about_bar = getSupportActionBar();
+
+        // Enable "up" functionality
+        about_bar.setDisplayHomeAsUpEnabled(true);
 
         // get intent from previous activity...
         Intent intent = getIntent();
