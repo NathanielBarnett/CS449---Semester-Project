@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">CS449-App</string>
+    <string name="app_name">Kitchen Buddy</string>
+    <string name="title_menu">Kitchen Conversions</string>
+    <string name="starting_desc_string">Starting Amount</string>
+    <string name="result_val"></string>
+    <string name="about_string">About</string>
+    <string name="menu_string">Menu</string>
+    <string name="settings_string">Settings</string>
 </resources>
