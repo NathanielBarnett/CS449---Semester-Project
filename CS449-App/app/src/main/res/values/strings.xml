@@ -6,6 +6,6 @@
     <string name="about_string">About</string>
     <string name="temp_string">Temperature Conversions</string>
     <string name="settings_string">Settings</string>
-    <string name="info_about">PUT INFO HERE....</string>
+    <string name="info_about">Info About App</string>
 
 </resources>
