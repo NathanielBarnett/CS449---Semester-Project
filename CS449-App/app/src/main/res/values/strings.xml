@@ -2,12 +2,24 @@
     <string name="app_name">Kitchen Buddy</string>
     <string name="title_menu">Kitchen Conversions</string>
     <string name="starting_desc_string">Starting Value</string>
-    <string name="result_val">0</string>
-    <string name="underline">________</string>
+    <string name="result_val">Result Value</string>
+    <string name="temp_conversion_sub">Enter a starting value,
+                        and convert to the desired temperature unit.</string>
     <string name="result_temp_val">0</string>
-    <string name="about_string">About</string>
+    <string name="about_string">About Kitchen Buddy:</string>
     <string name="temp_string">Temperature Conversions</string>
     <string name="settings_string">Settings</string>
-    <string name="info_about">Info About App</string>
+    <string name="desc_author">Developer/Creator: Nathaniel Barnett</string>
+    <string name="desc_app_mission">Purpose: To enable the average user to easily
+                and efficiently convert common kitchen related measurements to a
+                different unit.</string>
+    <string name="desc_Instructions">How to Use the Kitchen Buddy: \n 1. Select the
+                starting unit. \n 2. Enter the starting value. \n
+                3. Select the unit to be converted to. \n
+                4. Click \"done\" and the resulting conversion will be displayed in the
+                \"Result Value\" field.</string>
+    <string name="desc_menu_instructions">The \"Snowflake\" in the toolbar opens up the
+                temperature conversion menu, and the same instructions above apply.</string>
+
 
 </resources>

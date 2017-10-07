@@ -58,7 +58,7 @@ public class TempActivity extends AppCompatActivity implements AdapterView.OnIte
 
         //Setting result view
         TextView result_textView = (TextView) findViewById(R.id.result_temp_view);
-        SpannableString new_result = new SpannableString("content to be added");
+        SpannableString new_result = new SpannableString("Result Value");
         new_result.setSpan(new UnderlineSpan(), 0, new_result.length(), 0);
         result_textView.setText(new_result);
 
