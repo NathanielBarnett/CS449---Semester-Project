@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Kitchen Buddy</string>
     <string name="title_menu">Kitchen Conversions</string>
-    <string name="starting_desc_string">Starting Amount</string>
+    <string name="starting_desc_string">Starting Value</string>
     <string name="result_val"></string>
     <string name="about_string">About</string>
     <string name="temp_string">Temperature Conversions</string>

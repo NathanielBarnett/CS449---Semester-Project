@@ -10,7 +10,7 @@
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/temp_button"
-        android:icon="@drawable/menu_art"
+        android:icon="@drawable/temp_button"
         android:title="@string/temp_string"
-        app:showAsAction="never"/>
+        app:showAsAction="ifRoom"/>
 </menu>
