@@ -11,4 +11,10 @@
         <item>Bacon</item>
     </string-array>
 
+    <string-array name="temp_units">
+        <item>°C</item>
+        <item>°F</item>
+        <!--<item>K</item>-->
+    </string-array>
+
 </resources>
