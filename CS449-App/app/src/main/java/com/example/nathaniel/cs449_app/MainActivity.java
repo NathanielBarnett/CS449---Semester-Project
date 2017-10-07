@@ -1,10 +1,8 @@
 package com.example.nathaniel.cs449_app;
 
-import android.app.Activity;
-import android.content.ClipData;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +15,16 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    //Setting Spinners
+    Spinner start_weight_volume_spin = (Spinner) findViewById(R.id.starting_val_spinner);
+    Spinner result_weight_volume_spin = (Spinner) findViewById(R.id.result_val_spinner);
+
+    //Setting Spinner boolean values
+    boolean start_tsp = false, result_tsp = false, start_tbsp = false, result_tbsp = false,
+        start_oz = false, result_oz = false, start_cup = false, result_cup = false,
+        start_lbs = false, result_lbs = false, start_pint = false, result_pint = false,
+        start_quart = false, result_quart = false, start_gallon = false, result_gallon = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,19 +34,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Toolbar mainToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mainToolbar);
 
-        //Setting Spinners
-        Spinner weight_volume_spin = (Spinner) findViewById(R.id.starting_val_spinner);
-
         //ArrayAdapter using string array and spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+        ArrayAdapter<CharSequence> start_adapter = ArrayAdapter.createFromResource(this,
+                R.array.weight_volume_units, android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> result_adapter = ArrayAdapter.createFromResource(this,
                 R.array.weight_volume_units, android.R.layout.simple_spinner_dropdown_item);
 
         //Specifying layout
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        start_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        result_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         //Applying Adapter
-        weight_volume_spin.setAdapter(adapter);
-        weight_volume_spin.setOnItemSelectedListener(this);
+        start_weight_volume_spin.setAdapter(start_adapter);
+        start_weight_volume_spin.setOnItemSelectedListener(this);
+        result_weight_volume_spin.setAdapter(result_adapter);
+        result_weight_volume_spin.setOnItemSelectedListener(this);
     }
 
     @Override
@@ -79,42 +89,88 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         // parent.getItemAtPosition(pos)
         // Identical switch cases are simply for proof of concept.
         TextView result_string;
-        switch (pos) {
-            case 0: // first option in spinner
-                result_string = (TextView) findViewById(R.id.result_val_view);
-                result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
-                break;
-            case 1: // second option in spinner
-                result_string = (TextView) findViewById(R.id.result_val_view);
-                result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
-                break;
-            case 2: // third option in spinner
-                result_string = (TextView) findViewById(R.id.result_val_view);
-                result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
-                break;
-            case 3:
-                result_string = (TextView) findViewById(R.id.result_val_view);
-                result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
-                break;
-            case 4:
-                result_string = (TextView) findViewById(R.id.result_val_view);
-                result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
-                break;
-            case 5:
-                result_string = (TextView) findViewById(R.id.result_val_view);
-                result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
-                break;
-            case 6:
-                result_string = (TextView) findViewById(R.id.result_val_view);
-                result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
-                break;
-            case 7:
-                result_string = (TextView) findViewById(R.id.result_val_view);
-                result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
-                break;
-            default:
-                break;
+
+        // Switch case determining which spinner was clicked
+        switch (parent.getId()) {
+            case R.id.starting_val_spinner:
+
+                // Switch case for which option of that spinner was clicked
+                switch (pos) {
+                    case 0: // first option in spinner
+                        start_tsp = true;
+                        break;
+                    case 1: // second option in spinner
+                        start_tbsp = true;
+                        break;
+                    case 2: // third option in spinner
+                        start_oz = true;
+                        break;
+                    case 3:
+                        start_lbs = true;
+                        break;
+                    case 4:
+                        start_cup = true;
+                        break;
+                    case 5:
+                        result_string = (TextView) findViewById(R.id.result_val_view);
+                        result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        break;
+                    case 6:
+                        result_string = (TextView) findViewById(R.id.result_val_view);
+                        result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        break;
+                    case 7:
+                        result_string = (TextView) findViewById(R.id.result_val_view);
+                        result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        break;
+                    default:
+                        break;
+                }
+
+            // Result Spinner clicked
+            case R.id.result_val_spinner:
+
+                // Switch case for which option of that spinner was clicked
+                switch (pos) {
+                    case 0: // first option in spinner
+                        result_string = (TextView) findViewById(R.id.result_val_view);
+                        result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        break;
+                    case 1: // second option in spinner
+                        result_string = (TextView) findViewById(R.id.result_val_view);
+                        result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        break;
+                    case 2: // third option in spinner
+                        result_string = (TextView) findViewById(R.id.result_val_view);
+                        result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        break;
+                    case 3:
+                        result_string = (TextView) findViewById(R.id.result_val_view);
+                        result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        break;
+                    case 4:
+                        result_string = (TextView) findViewById(R.id.result_val_view);
+                        result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        break;
+                    case 5:
+                        result_string = (TextView) findViewById(R.id.result_val_view);
+                        result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        break;
+                    case 6:
+                        result_string = (TextView) findViewById(R.id.result_val_view);
+                        result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        break;
+                    case 7:
+                        result_string = (TextView) findViewById(R.id.result_val_view);
+                        result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        break;
+                    default:
+                        break;
+                }
+
         }
+
+
     }
 
     public void onNothingSelected(AdapterView<?> parent) {

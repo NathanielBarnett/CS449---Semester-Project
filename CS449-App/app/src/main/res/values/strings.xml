@@ -9,6 +9,8 @@
     <string name="about_string">About Kitchen Buddy:</string>
     <string name="temp_string">Temperature Conversions</string>
     <string name="settings_string">Settings</string>
+    <string name="convert_string">Convert</string>
+    <string name="prev_convert_string">Previous Conversion</string>
     <string name="desc_author">Developer/Creator: Nathaniel Barnett</string>
     <string name="desc_app_mission">Purpose: To enable the average user to easily
                 and efficiently convert common kitchen related measurements to a

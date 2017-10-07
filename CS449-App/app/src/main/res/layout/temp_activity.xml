@@ -69,7 +69,7 @@
         tools:text="@string/starting_desc_string" />
 
     <Spinner
-        android:id="@+id/starting_val_spinner"
+        android:id="@+id/starting_temp_spinner"
         android:layout_width="129dp"
         android:layout_height="43dp"
         android:background="@android:drawable/btn_dropdown"
@@ -97,7 +97,7 @@
 
 
     <Spinner
-        android:id="@+id/result_val_spinner"
+        android:id="@+id/result_temp_spinner"
         android:layout_width="129dp"
         android:layout_height="43dp"
         android:background="@android:drawable/btn_dropdown"
