@@ -10,25 +10,31 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    //Setting Spinners
-    Spinner start_weight_volume_spin = (Spinner) findViewById(R.id.starting_val_spinner);
-    Spinner result_weight_volume_spin = (Spinner) findViewById(R.id.result_val_spinner);
-
     //Setting Spinner boolean values
-    boolean start_tsp = false, result_tsp = false, start_tbsp = false, result_tbsp = false,
-        start_oz = false, result_oz = false, start_cup = false, result_cup = false,
-        start_lbs = false, result_lbs = false, start_pint = false, result_pint = false,
-        start_quart = false, result_quart = false, start_gallon = false, result_gallon = false;
+    //Starting spinner values
+    boolean start_tsp = false, start_tbsp = false, start_oz = false, start_cup = false,
+            start_lbs = false, start_pint = false, start_quart = false, start_gallon = false,
+    //Result spinner values
+            result_tsp = false, result_tbsp = false, result_oz = false,  result_cup = false,
+            result_lbs = false,  result_pint = false, result_quart = false,  result_gallon = false;
+
+    //Setting convert buttons
+    Button mConvertButton, mPrevConvertButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Setting Spinners
+        Spinner start_weight_volume_spin = (Spinner) findViewById(R.id.starting_val_spinner);
+        Spinner result_weight_volume_spin = (Spinner) findViewById(R.id.result_val_spinner);
 
         // Setting Toolbar
         Toolbar mainToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -49,6 +55,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         start_weight_volume_spin.setOnItemSelectedListener(this);
         result_weight_volume_spin.setAdapter(result_adapter);
         result_weight_volume_spin.setOnItemSelectedListener(this);
+
+        //assigning Buttons
+        mConvertButton = (Button) findViewById(R.id.convert_button);
+        mPrevConvertButton = (Button) findViewById(R.id.prev_convert_button);
     }
 
     @Override
@@ -88,8 +98,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         // An item was selected. Retrieve the selected item using
         // parent.getItemAtPosition(pos)
         // Identical switch cases are simply for proof of concept.
-        TextView result_string;
+        TextView result_string, start_string;
 
+
+        result_string = (TextView) findViewById(R.id.result_val_test);
+        start_string = (TextView) findViewById(R.id.start_val_test);
         // Switch case determining which spinner was clicked
         switch (parent.getId()) {
             case R.id.starting_val_spinner:
@@ -97,31 +110,44 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 // Switch case for which option of that spinner was clicked
                 switch (pos) {
                     case 0: // first option in spinner
+                        reset_bools("start");
                         start_tsp = true;
+                        start_string.setText(String.valueOf(start_tsp));
                         break;
                     case 1: // second option in spinner
+                        reset_bools("start");
                         start_tbsp = true;
+                        start_string.setText(String.valueOf(start_tbsp));
                         break;
                     case 2: // third option in spinner
+                        reset_bools("start");
                         start_oz = true;
+                        start_string.setText(String.valueOf(start_oz));
                         break;
                     case 3:
+                        reset_bools("start");
                         start_lbs = true;
+                        start_string.setText(String.valueOf(start_lbs));
                         break;
                     case 4:
+                        reset_bools("start");
                         start_cup = true;
+                        start_string.setText(String.valueOf(start_cup));
                         break;
                     case 5:
-                        result_string = (TextView) findViewById(R.id.result_val_view);
-                        result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        reset_bools("start");
+                        start_pint = true;
+                        start_string.setText(String.valueOf(start_pint));
                         break;
                     case 6:
-                        result_string = (TextView) findViewById(R.id.result_val_view);
-                        result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        reset_bools("start");
+                        start_quart = true;
+                        start_string.setText(String.valueOf(start_quart));
                         break;
                     case 7:
-                        result_string = (TextView) findViewById(R.id.result_val_view);
-                        result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        reset_bools("start");
+                        start_gallon = true;
+                        start_string.setText(String.valueOf(start_gallon));
                         break;
                     default:
                         break;
@@ -133,36 +159,43 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 // Switch case for which option of that spinner was clicked
                 switch (pos) {
                     case 0: // first option in spinner
-                        result_string = (TextView) findViewById(R.id.result_val_view);
-                        result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        reset_bools("result");
+                        result_tsp = true;
+                        result_string.setText(String.valueOf(result_tsp));
                         break;
                     case 1: // second option in spinner
-                        result_string = (TextView) findViewById(R.id.result_val_view);
-                        result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        reset_bools("result");
+                        result_tbsp = true;
+                        result_string.setText(String.valueOf(result_tbsp));
                         break;
                     case 2: // third option in spinner
-                        result_string = (TextView) findViewById(R.id.result_val_view);
-                        result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        reset_bools("result");
+                        result_oz = true;
+                        result_string.setText(String.valueOf(result_oz));
                         break;
                     case 3:
-                        result_string = (TextView) findViewById(R.id.result_val_view);
-                        result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        reset_bools("result");
+                        result_lbs = true;
+                        result_string.setText(String.valueOf(result_lbs));
                         break;
                     case 4:
-                        result_string = (TextView) findViewById(R.id.result_val_view);
-                        result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
-                        break;
+                        reset_bools("result");
+                        result_cup = true;
+                        result_string.setText(String.valueOf(result_cup));
                     case 5:
-                        result_string = (TextView) findViewById(R.id.result_val_view);
-                        result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        reset_bools("result");
+                        result_pint = true;
+                        result_string.setText(String.valueOf(result_pint));
                         break;
                     case 6:
-                        result_string = (TextView) findViewById(R.id.result_val_view);
-                        result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        reset_bools("result");
+                        result_quart = true;
+                        result_string.setText(String.valueOf(result_quart));
                         break;
                     case 7:
-                        result_string = (TextView) findViewById(R.id.result_val_view);
-                        result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        reset_bools("result");
+                        result_gallon = true;
+                        result_string.setText(String.valueOf(result_gallon));
                         break;
                     default:
                         break;
@@ -175,6 +208,27 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
+    }
+
+    //Param: String "start" or "result"
+    //Post: Starting spinner boolean or result spinner boolean values are set to false
+    private void reset_bools(String start_result) {
+        //Reset starting spinner values to false
+        if (start_result == "start") {
+            start_tsp = false; start_tbsp = false; start_oz = false; start_cup = false;
+            start_lbs = false; start_pint = false; start_quart = false; start_gallon = false;
+
+        }
+        //Reset result spinner values to false
+        else if (start_result == "result") {
+            result_tsp = false; result_tbsp = false; result_oz = false;  result_cup = false;
+            result_lbs = false;  result_pint = false; result_quart = false;  result_gallon = false;
+        }
+        //If incorrect input given -> throw exception
+        else {
+
+        }
+
     }
 }
 

@@ -40,20 +40,23 @@ public class TempActivity extends AppCompatActivity implements AdapterView.OnIte
         Intent intent = getIntent();
 
         //Setting Spinners
-        Spinner start_temp_spin = (Spinner) findViewById(R.id.starting_val_spinner);
-        Spinner result_temp_spin = (Spinner) findViewById(R.id.result_val_spinner);
+        Spinner start_temp_spin = (Spinner) findViewById(R.id.starting_temp_spinner);
+        Spinner result_temp_spin = (Spinner) findViewById(R.id.result_temp_spinner);
 
         //ArrayAdapter using string array and spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+        ArrayAdapter<CharSequence> start_temp_adapter = ArrayAdapter.createFromResource(this,
+                R.array.temp_units, android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> result_temp_adapter = ArrayAdapter.createFromResource(this,
                 R.array.temp_units, android.R.layout.simple_spinner_dropdown_item);
 
         //Specifying layout
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        start_temp_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        result_temp_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         //Applying Adapter
-        start_temp_spin.setAdapter(adapter);
-        result_temp_spin.setAdapter(adapter);
+        start_temp_spin.setAdapter(start_temp_adapter);
         start_temp_spin.setOnItemSelectedListener(this);
+        result_temp_spin.setAdapter(result_temp_adapter);
         result_temp_spin.setOnItemSelectedListener(this);
 
         //Setting result view

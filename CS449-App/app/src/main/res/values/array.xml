@@ -9,7 +9,6 @@
         <item>Pint</item>
         <item>Quart</item>
         <item>Gallon</item>
-        <item>Bacon</item>
     </string-array>
 
     <string-array name="temp_units">

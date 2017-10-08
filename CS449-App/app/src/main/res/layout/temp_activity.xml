@@ -86,14 +86,14 @@
         android:layout_width="142dp"
         android:layout_height="44dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="82dp"
+        android:layout_marginTop="70dp"
         android:text="@string/result_temp_val"
         android:textAlignment="center"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/starting_desc_temp"
+        android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/starting_desc_temp" />
+        app:layout_constraintHorizontal_bias="0.0" />
 
 
     <Spinner
@@ -101,13 +101,13 @@
         android:layout_width="129dp"
         android:layout_height="43dp"
         android:background="@android:drawable/btn_dropdown"
-        android:layout_marginTop="232dp"
+        android:layout_marginTop="220dp"
         app:layout_constraintTop_toBottomOf="@+id/temp_title_menu"
-        android:layout_marginRight="124dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="158dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="1.0" />
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <TextView
         android:id="@+id/Temp_Conversion_subheader"
