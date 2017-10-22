@@ -69,7 +69,7 @@ class VConverter {
         return oz;
     }
     public static double oz_To_lbs(double oz){
-        return oz * 16;
+        return oz / 16;
     }
     public static double oz_To_cup(double oz){
         return oz / 8;
@@ -86,10 +86,10 @@ class VConverter {
 
     //fluid lbs. conversions
     public static double lbs_To_tsp(double lbs){
-        return oz_To_tsp(lbs * 16);
+        return (2 * (lbs * 16)) * 3;
     }
     public static double lbs_To_tbsp(double lbs){
-        return oz_To_tbsp(lbs * 16);
+        return 2 * (lbs * 16);
     }
     public static double lbs_To_oz(double lbs){
         return lbs * 16;

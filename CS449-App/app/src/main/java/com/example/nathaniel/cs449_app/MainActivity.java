@@ -64,11 +64,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         mConvertButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                double input_Val, converted_val;
                EditText start_string = (EditText) findViewById(R.id.starting_val);
-               double input_Val = Double.parseDouble(start_string.getText().toString());
-                double converted_val = converter_wrapper(input_Val);
                 TextView result_view = (TextView) findViewById(R.id.result_val_view);
-                result_view.setText(String.valueOf(converted_val));
+
+                try {
+                    input_Val = Double.parseDouble(start_string.getText().toString());
+                    converted_val = converter_wrapper(input_Val);
+                    result_view.setText(String.valueOf(converted_val));
+                }
+                catch (NumberFormatException exc) {
+                    result_view.setText(String.valueOf(0));
+                }
             }
         });
     }
@@ -125,38 +132,47 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     case 0: // first option in spinner
                         reset_bools("start");
                         start_tsp = true;
+                        start_string.setText("0");
                         break;
                     case 1: // second option in spinner
                         reset_bools("start");
                         start_tbsp = true;
+                        start_string.setText("1");
                         break;
                     case 2: // third option in spinner
                         reset_bools("start");
                         start_oz = true;
+                        start_string.setText("2");
                         break;
                     case 3:
                         reset_bools("start");
                         start_lbs = true;
+                        start_string.setText("3");
                         break;
                     case 4:
                         reset_bools("start");
                         start_cup = true;
+                        start_string.setText("4");
                         break;
                     case 5:
                         reset_bools("start");
                         start_pint = true;
+                        start_string.setText("5");
                         break;
                     case 6:
                         reset_bools("start");
                         start_quart = true;
+                        start_string.setText("6");
                         break;
                     case 7:
                         reset_bools("start");
                         start_gallon = true;
+                        start_string.setText("7");
                         break;
                     default:
                         break;
                 }
+                break;
 
             // Result Spinner clicked
             case R.id.result_val_spinner:
@@ -166,33 +182,42 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     case 0: // first option in spinner
                         reset_bools("result");
                         result_tsp = true;
+                        result_string.setText("0");
                         break;
                     case 1: // second option in spinner
                         reset_bools("result");
                         result_tbsp = true;
+                        result_string.setText("1");
                         break;
                     case 2: // third option in spinner
                         reset_bools("result");
                         result_oz = true;
+                        result_string.setText("2");
                         break;
                     case 3:
                         reset_bools("result");
                         result_lbs = true;
+                        result_string.setText("3");
                         break;
                     case 4:
                         reset_bools("result");
                         result_cup = true;
+                        result_string.setText("4");
+                        break;
                     case 5:
                         reset_bools("result");
                         result_pint = true;
+                        result_string.setText("5");
                         break;
                     case 6:
                         reset_bools("result");
                         result_quart = true;
+                        result_string.setText("6");
                         break;
                     case 7:
                         reset_bools("result");
                         result_gallon = true;
+                        result_string.setText("7");
                         break;
                     default:
                         break;
@@ -231,13 +256,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private double converter_wrapper(double inputVal) {
         boolean[] starting_bools = grab_start_bools(), resulting_bools = grab_result_bools();
         int i = 0, start_bool_loc = 0, result_bool_loc = 0;
-        while (starting_bools[i] != true && i < 8) {
-            if (starting_bools[i] == true) {
+        while ( i < 8) {
+            if (starting_bools[i]) {
                 start_bool_loc = i;
             }
-            if (resulting_bools[i] == true) {
+            if (resulting_bools[i]) {
                 result_bool_loc = i;
             }
+            i = i + 1;
         }
         // if start_bool_loc | result_bool_loc != true, throw exception.
 
