@@ -4,10 +4,10 @@ package com.example.nathaniel.cs449_app;
  * Created by Nathaniel on 10/21/2017.
  */
 
-public class VConverter {
+class VConverter {
 
     //tsp conversions
-    public static double tsp_to_tsp(double tsp) {
+    public static double tsp_To_tsp(double tsp) {
         return tsp;
     }
     public static double tsp_To_tbsp(double tsp) {
@@ -198,7 +198,7 @@ public class VConverter {
     public static double gallon_To_oz(double gallon){
         return cup_To_oz(gallon * 16);
     }
-    public static double gallon_to_lbs(double gallon){
+    public static double gallon_To_lbs(double gallon){
         return gallon * 8;
     }
     public static double gallon_To_cup(double gallon){
@@ -214,3 +214,5 @@ public class VConverter {
         return gallon;
     }
 }
+
+

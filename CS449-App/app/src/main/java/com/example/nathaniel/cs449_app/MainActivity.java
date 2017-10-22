@@ -13,7 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import com.example.nathaniel.cs449_app.WVConverter;
+import com.example.nathaniel.cs449_app.VConverter;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -113,42 +113,34 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     case 0: // first option in spinner
                         reset_bools("start");
                         start_tsp = true;
-                        start_string.setText(String.valueOf(start_tsp));
                         break;
                     case 1: // second option in spinner
                         reset_bools("start");
                         start_tbsp = true;
-                        start_string.setText(String.valueOf(start_tbsp));
                         break;
                     case 2: // third option in spinner
                         reset_bools("start");
                         start_oz = true;
-                        start_string.setText(String.valueOf(start_oz));
                         break;
                     case 3:
                         reset_bools("start");
                         start_lbs = true;
-                        start_string.setText(String.valueOf(start_lbs));
                         break;
                     case 4:
                         reset_bools("start");
                         start_cup = true;
-                        start_string.setText(String.valueOf(start_cup));
                         break;
                     case 5:
                         reset_bools("start");
                         start_pint = true;
-                        start_string.setText(String.valueOf(start_pint));
                         break;
                     case 6:
                         reset_bools("start");
                         start_quart = true;
-                        start_string.setText(String.valueOf(start_quart));
                         break;
                     case 7:
                         reset_bools("start");
                         start_gallon = true;
-                        start_string.setText(String.valueOf(start_gallon));
                         break;
                     default:
                         break;
@@ -162,41 +154,33 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     case 0: // first option in spinner
                         reset_bools("result");
                         result_tsp = true;
-                        result_string.setText(String.valueOf(result_tsp));
                         break;
                     case 1: // second option in spinner
                         reset_bools("result");
                         result_tbsp = true;
-                        result_string.setText(String.valueOf(result_tbsp));
                         break;
                     case 2: // third option in spinner
                         reset_bools("result");
                         result_oz = true;
-                        result_string.setText(String.valueOf(result_oz));
                         break;
                     case 3:
                         reset_bools("result");
                         result_lbs = true;
-                        result_string.setText(String.valueOf(result_lbs));
                         break;
                     case 4:
                         reset_bools("result");
                         result_cup = true;
-                        result_string.setText(String.valueOf(result_cup));
                     case 5:
                         reset_bools("result");
                         result_pint = true;
-                        result_string.setText(String.valueOf(result_pint));
                         break;
                     case 6:
                         reset_bools("result");
                         result_quart = true;
-                        result_string.setText(String.valueOf(result_quart));
                         break;
                     case 7:
                         reset_bools("result");
                         result_gallon = true;
-                        result_string.setText(String.valueOf(result_gallon));
                         break;
                     default:
                         break;
@@ -232,7 +216,302 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
+    private double converter_wrapper(double inputVal) {
+        boolean[] starting_bools = grab_start_bools(), resulting_bools = grab_result_bools();
+        int i = 0, start_bool_loc = 0, result_bool_loc = 0;
+        while (starting_bools[i] != true && i < 8) {
+            if (starting_bools[i] == true) {
+                start_bool_loc = i;
+            }
+            if (resulting_bools[i] == true) {
+                result_bool_loc = i;
+            }
+        }
+        // if start_bool_loc | result_bool_loc != true, throw exception.
+
+        return conversionSwitchCase(start_bool_loc,result_bool_loc,inputVal);
+    }
+
+    private  boolean[] grab_start_bools() {
+        boolean[] start_bools = new boolean[8];
+        start_bools[0] = start_tsp;
+        start_bools[1] = start_tbsp;
+        start_bools[2] = start_oz;
+        start_bools[3] = start_lbs;
+        start_bools[4] = start_cup;
+        start_bools[5] = start_pint;
+        start_bools[6] = start_quart;
+        start_bools[7] = start_gallon;
+
+        return start_bools;
+    }
+
+    private  boolean[] grab_result_bools() {
+        boolean[] result_bools = new boolean[8];
+        result_bools[0] = result_tsp;
+        result_bools[1] = result_tbsp;
+        result_bools[2] = result_oz;
+        result_bools[3] = result_lbs;
+        result_bools[4] = result_cup;
+        result_bools[5] = result_pint;
+        result_bools[6] = result_quart;
+        result_bools[7] = result_gallon;
+
+        return result_bools;
+    }
+
+    public double conversionSwitchCase(int start_loc, int result_loc, double startVal) {
+        double convertedVal = -1;
+        // Switch case to catch what starting and ending conversion should be made.
+        switch (start_loc) {
+            case 0:
+                switch (result_loc) {
+                    case 0:
+                        convertedVal = VConverter.tsp_To_tsp(startVal);
+                        break;
+                    case 1:
+                        convertedVal = VConverter.tsp_To_tbsp(startVal);
+                        break;
+                    case 2:
+                        convertedVal = VConverter.tsp_To_oz(startVal);
+                        break;
+                    case 3:
+                        convertedVal = VConverter.tsp_To_lbs(startVal);
+                        break;
+                    case 4:
+                        convertedVal = VConverter.tsp_To_cup(startVal);
+                        break;
+                    case 5:
+                        convertedVal = VConverter.tsp_To_pint(startVal);
+                        break;
+                    case 6:
+                        convertedVal = VConverter.tsp_To_quart(startVal);
+                        break;
+                    case 7:
+                        convertedVal = VConverter.tsp_To_gallon(startVal);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 1:
+                switch (result_loc) {
+                    case 0:
+                        convertedVal = VConverter.tbsp_To_tsp(startVal);
+                        break;
+                    case 1:
+                        convertedVal = VConverter.tbsp_To_tbsp(startVal);
+                        break;
+                    case 2:
+                        convertedVal = VConverter.tbsp_To_oz(startVal);
+                        break;
+                    case 3:
+                        convertedVal = VConverter.tbsp_To_lbs(startVal);
+                        break;
+                    case 4:
+                        convertedVal = VConverter.tbsp_To_cup(startVal);
+                        break;
+                    case 5:
+                        convertedVal = VConverter.tbsp_To_pint(startVal);
+                        break;
+                    case 6:
+                        convertedVal = VConverter.tbsp_To_quart(startVal);
+                        break;
+                    case 7:
+                        convertedVal = VConverter.tbsp_To_gallon(startVal);
+                        break;
+                    default:
+                        break;
+                }
+            case 2:
+                switch (result_loc) {
+                    case 0:
+                        convertedVal = VConverter.oz_To_tsp(startVal);
+                        break;
+                    case 1:
+                        convertedVal = VConverter.oz_To_tbsp(startVal);
+                        break;
+                    case 2:
+                        convertedVal = VConverter.oz_To_oz(startVal);
+                        break;
+                    case 3:
+                        convertedVal = VConverter.oz_To_lbs(startVal);
+                        break;
+                    case 4:
+                        convertedVal = VConverter.oz_To_cup(startVal);
+                        break;
+                    case 5:
+                        convertedVal = VConverter.oz_To_pint(startVal);
+                        break;
+                    case 6:
+                        convertedVal = VConverter.oz_To_quart(startVal);
+                        break;
+                    case 7:
+                        convertedVal = VConverter.oz_To_gallon(startVal);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 3:
+                switch (result_loc) {
+                    case 0:
+                        convertedVal = VConverter.lbs_To_tsp(startVal);
+                        break;
+                    case 1:
+                        convertedVal = VConverter.lbs_To_tbsp(startVal);
+                        break;
+                    case 2:
+                        convertedVal = VConverter.lbs_To_oz(startVal);
+                        break;
+                    case 3:
+                        convertedVal = VConverter.lbs_To_lbs(startVal);
+                        break;
+                    case 4:
+                        convertedVal = VConverter.lbs_To_cup(startVal);
+                        break;
+                    case 5:
+                        convertedVal = VConverter.lbs_To_pint(startVal);
+                        break;
+                    case 6:
+                        convertedVal = VConverter.lbs_To_quart(startVal);
+                        break;
+                    case 7:
+                        convertedVal = VConverter.lbs_To_gallon(startVal);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 4:
+                switch (result_loc) {
+                    case 0:
+                        convertedVal = VConverter.cup_To_tsp(startVal);
+                        break;
+                    case 1:
+                        convertedVal = VConverter.cup_To_tbsp(startVal);
+                        break;
+                    case 2:
+                        convertedVal = VConverter.cup_To_oz(startVal);
+                        break;
+                    case 3:
+                        convertedVal = VConverter.cup_To_lbs(startVal);
+                        break;
+                    case 4:
+                        convertedVal = VConverter.cup_To_cup(startVal);
+                        break;
+                    case 5:
+                        convertedVal = VConverter.cup_To_pint(startVal);
+                        break;
+                    case 6:
+                        convertedVal = VConverter.cup_To_quart(startVal);
+                        break;
+                    case 7:
+                        convertedVal = VConverter.cup_To_gallon(startVal);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 5:
+                switch (result_loc) {
+                    case 0:
+                        convertedVal = VConverter.pint_To_tsp(startVal);
+                        break;
+                    case 1:
+                        convertedVal = VConverter.pint_To_tbsp(startVal);
+                        break;
+                    case 2:
+                        convertedVal = VConverter.pint_To_oz(startVal);
+                        break;
+                    case 3:
+                        convertedVal = VConverter.pint_To_lbs(startVal);
+                        break;
+                    case 4:
+                        convertedVal = VConverter.pint_To_cup(startVal);
+                        break;
+                    case 5:
+                        convertedVal = VConverter.pint_To_pint(startVal);
+                        break;
+                    case 6:
+                        convertedVal = VConverter.pint_To_quart(startVal);
+                        break;
+                    case 7:
+                        convertedVal = VConverter.pint_To_gallon(startVal);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 6:
+                switch (result_loc) {
+                    case 0:
+                        convertedVal = VConverter.quart_To_tsp(startVal);
+                        break;
+                    case 1:
+                        convertedVal = VConverter.quart_To_tbsp(startVal);
+                        break;
+                    case 2:
+                        convertedVal = VConverter.quart_To_oz(startVal);
+                        break;
+                    case 3:
+                        convertedVal = VConverter.quart_To_lbs(startVal);
+                        break;
+                    case 4:
+                        convertedVal = VConverter.quart_To_cup(startVal);
+                        break;
+                    case 5:
+                        convertedVal = VConverter.quart_To_pint(startVal);
+                        break;
+                    case 6:
+                        convertedVal = VConverter.quart_To_quart(startVal);
+                        break;
+                    case 7:
+                        convertedVal = VConverter.quart_To_gallon(startVal);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 7:
+                switch (result_loc) {
+                    case 0:
+                        convertedVal = VConverter.gallon_To_tsp(startVal);
+                        break;
+                    case 1:
+                        convertedVal = VConverter.gallon_To_tbsp(startVal);
+                        break;
+                    case 2:
+                        convertedVal = VConverter.gallon_To_oz(startVal);
+                        break;
+                    case 3:
+                        convertedVal = VConverter.gallon_To_lbs(startVal);
+                        break;
+                    case 4:
+                        convertedVal = VConverter.gallon_To_cup(startVal);
+                        break;
+                    case 5:
+                        convertedVal = VConverter.gallon_To_pint(startVal);
+                        break;
+                    case 6:
+                        convertedVal = VConverter.gallon_To_quart(startVal);
+                        break;
+                    case 7:
+                        convertedVal = VConverter.gallon_To_gallon(startVal);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            default:
+                break;
+        }
+
+        return convertedVal;
+    }
 }
+
+
 
 
 
