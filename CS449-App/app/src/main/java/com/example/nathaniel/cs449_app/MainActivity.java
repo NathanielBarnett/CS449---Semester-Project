@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import com.example.nathaniel.cs449_app.VConverter;
@@ -60,6 +61,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         //assigning Buttons
         mConvertButton = (Button) findViewById(R.id.convert_button);
         mPrevConvertButton = (Button) findViewById(R.id.prev_convert_button);
+
+        mConvertButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+               EditText start_string = (EditText) findViewById(R.id.starting_val);
+               double input_Val = Double.parseDouble(start_string.getText().toString());
+                double converted_val = converter_wrapper(input_Val);
+                TextView result_view = (TextView) findViewById(R.id.result_val_view);
+                result_view.setText(String.valueOf(converted_val));
+            }
+        });
     }
 
     @Override
@@ -93,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         }
     }
+
 
     public void onItemSelected(AdapterView<?> parent, View view,
                                int pos, long id) {
