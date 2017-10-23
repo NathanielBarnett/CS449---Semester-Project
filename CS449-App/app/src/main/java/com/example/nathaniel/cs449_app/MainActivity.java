@@ -361,6 +361,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     default:
                         break;
                 }
+                break;
             case 2:
                 switch (result_loc) {
                     case 0:

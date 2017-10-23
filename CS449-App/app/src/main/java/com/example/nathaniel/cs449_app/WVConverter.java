@@ -130,21 +130,21 @@ class VConverter {
         return cup / 2;
     }
     public static double cup_To_quart(double cup){
-        return cup / 8;
+        return cup / 4;
     }
     public static double cup_To_gallon(double cup){
-        return cup / 32;
+        return cup / 8;
     }
 
     // pint conversions;
     public static double pint_To_tsp(double pint){
-        return cup_To_tsp(2 * pint);
+        return ((pint * 2) * 16) * 3;
     }
     public static double pint_To_tbsp(double pint){
-        return cup_To_tbsp(2 * pint);
+        return (pint * 2) * 16;
     }
     public static double pint_To_oz(double pint){
-        return cup_To_oz(2 * pint);
+        return (pint * 2) * 8;
     }
     public static double pint_To_lbs(double pint){
         return pint; // 16 fluid oz. == pint
@@ -164,13 +164,13 @@ class VConverter {
 
     // quart conversions
     public static double quart_To_tsp(double quart){
-        return cup_To_tsp(quart * 4);
+        return ((quart * 4) * 16) * 3;
     }
     public static double quart_To_tbsp(double quart){
-        return cup_To_tbsp(quart * 4);
+        return (quart * 4) * 16;
     }
     public static double quart_To_oz(double quart){
-        return cup_To_oz(quart * 4);
+        return (quart * 4) * 8;
     }
     public static double quart_To_lbs(double quart){
         return quart * 2;
@@ -190,22 +190,22 @@ class VConverter {
 
     // gallon conversions
     public static double gallon_To_tsp(double gallon){
-        return cup_To_tsp(gallon * 16);
+        return ((((gallon * 4) * 2) * 2) * 16) * 3;
     }
     public static double gallon_To_tbsp(double gallon){
-        return cup_To_tbsp(gallon * 16);
+        return (((gallon * 4) * 2) * 2) * 16;
     }
     public static double gallon_To_oz(double gallon){
-        return cup_To_oz(gallon * 16);
+        return (((gallon * 4) * 2) * 2) * 8;
     }
     public static double gallon_To_lbs(double gallon){
-        return gallon * 8;
+        return (gallon * 4) * 2;
     }
     public static double gallon_To_cup(double gallon){
-        return gallon * 16;
+        return ((gallon * 4) * 2) * 2;
     }
     public static double gallon_To_pint(double gallon){
-        return gallon * 8;
+        return (gallon * 4) * 2;
     }
     public static double gallon_To_quart(double gallon){
         return gallon * 4;
