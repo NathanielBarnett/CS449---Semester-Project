@@ -10,6 +10,8 @@ import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -21,6 +23,11 @@ import static com.example.nathaniel.cs449_app.R.id.textView;
  */
 
 public class TempActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
+    //Temp Bools
+    // If start_temp == true, then start temp is fahrenheit, if false, then start_temp is celsius
+    // same for result_temp
+    boolean start_temp = false, result_temp = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +72,27 @@ public class TempActivity extends AppCompatActivity implements AdapterView.OnIte
         new_result.setSpan(new UnderlineSpan(), 0, new_result.length(), 0);
         result_textView.setText(new_result);
 
+        //Setting convert button
+        Button mTempConvertButton = (Button) findViewById(R.id.temp_convert_button);
+
+        mTempConvertButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                double input_Val, converted_val;
+                EditText start_string = (EditText) findViewById(R.id.starting_val_temp);
+                TextView result_view = (TextView) findViewById(R.id.result_temp_view);
+
+                try {
+                    input_Val = Double.parseDouble(start_string.getText().toString());
+                    if ()
+                    converted_val = temp_converter_wrapper(input_Val);
+                    result_view.setText(String.valueOf(converted_val));
+                }
+                catch (NumberFormatException exc) {
+                    result_view.setText(String.valueOf(0));
+                }
+            }
+        });
+
 
     }
 
@@ -77,6 +105,7 @@ public class TempActivity extends AppCompatActivity implements AdapterView.OnIte
         TextView result_string;
         switch (pos) {
             case 0: // first option in spinner
+                start_temp = true;
                 result_string = (TextView) findViewById(R.id.result_val_view);
 //                result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
                 break;
@@ -91,6 +120,16 @@ public class TempActivity extends AppCompatActivity implements AdapterView.OnIte
 
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
+    }
+
+    //Param: choice -> 0 = fahrenheit to celsius, 1 =  celsius to fahrenheit
+    private double temp_converter_wrapper (int choice, double input_temp){
+        if (choice == 0) {
+           return TempConverter.fah_To_cel(input_temp);
+        }
+        else if (choice == 1) {
+            return TempConverter.cel_To_fah(input_temp);
+        }
     }
 }
 
