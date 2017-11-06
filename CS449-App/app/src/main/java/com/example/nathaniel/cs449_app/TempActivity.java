@@ -77,18 +77,33 @@ public class TempActivity extends AppCompatActivity implements AdapterView.OnIte
 
         mTempConvertButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                double input_Val, converted_val;
+                double input_Val = 0.0, converted_val;
+                int choice;
                 EditText start_string = (EditText) findViewById(R.id.starting_val_temp);
                 TextView result_view = (TextView) findViewById(R.id.result_temp_view);
 
-                try {
-                    input_Val = Double.parseDouble(start_string.getText().toString());
-                    if ()
-                    converted_val = temp_converter_wrapper(input_Val);
+                // Set up flags for starting ending units
+                if (start_temp) {
+                    choice = 0;
+                }
+                else {
+                    choice = 1;
+                }
+
+                //if starting ending units are different, then use choice variable.
+                // else starting/ending units are same, and display input value.
+                if (result_temp != start_temp) {
+                    try {
+                        input_Val = Double.parseDouble(start_string.getText().toString());
+                    } catch (NumberFormatException exc) {
+                        result_view.setText(String.valueOf(0));
+                    }
+
+                    converted_val = temp_converter_wrapper(choice, input_Val);
                     result_view.setText(String.valueOf(converted_val));
                 }
-                catch (NumberFormatException exc) {
-                    result_view.setText(String.valueOf(0));
+                else {
+                    result_view.setText(String.valueOf(input_Val));
                 }
             }
         });
@@ -103,18 +118,38 @@ public class TempActivity extends AppCompatActivity implements AdapterView.OnIte
         // parent.getItemAtPosition(pos)
         // Identical switch cases are simply for proof of concept.
         TextView result_string;
-        switch (pos) {
-            case 0: // first option in spinner
-                start_temp = true;
-                result_string = (TextView) findViewById(R.id.result_val_view);
-//                result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
-                break;
-            case 1: // second option in spinner
-                result_string = (TextView) findViewById(R.id.result_val_view);
-//                result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
-                break;
-            default:
-                break;
+        switch (parent.getId()) {
+            case R.id.starting_temp_spinner:
+                switch (pos) {
+                    case 0: // first option in spinner
+                        start_temp = true;
+                        result_string = (TextView) findViewById(R.id.result_val_view);
+//                  result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        break;
+                    case 1: // second option in spinner
+                        start_temp = false;
+                        result_string = (TextView) findViewById(R.id.result_val_view);
+//                  result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        break;
+                    default:
+                        break;
+                }
+            case R.id.result_temp_spinner:
+                switch (pos) {
+                    case 0: // first option in spinner
+                        result_temp = true;
+                        result_string = (TextView) findViewById(R.id.result_val_view);
+//                  result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        break;
+                    case 1: // second option in spinner
+                        result_temp = false;
+                        result_string = (TextView) findViewById(R.id.result_val_view);
+//                  result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
+                        break;
+                    default:
+                        break;
+                }
+
         }
     }
 
@@ -122,12 +157,12 @@ public class TempActivity extends AppCompatActivity implements AdapterView.OnIte
         // Another interface callback
     }
 
-    //Param: choice -> 0 = fahrenheit to celsius, 1 =  celsius to fahrenheit
+    //Param: choice -> 0 = fahrenheit to celsius, else =  celsius to fahrenheit
     private double temp_converter_wrapper (int choice, double input_temp){
         if (choice == 0) {
            return TempConverter.fah_To_cel(input_temp);
         }
-        else if (choice == 1) {
+        else {
             return TempConverter.cel_To_fah(input_temp);
         }
     }
