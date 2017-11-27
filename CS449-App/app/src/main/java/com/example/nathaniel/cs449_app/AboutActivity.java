@@ -12,8 +12,8 @@ import android.support.v7.widget.Toolbar;
 
 public class AboutActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+@Override
+protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_activity);
         Toolbar aboutToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -27,7 +27,7 @@ public class AboutActivity extends AppCompatActivity {
 
         // get intent from previous activity...
         Intent intent = getIntent();
-    }
+        }
 
 
- }
+        }

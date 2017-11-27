@@ -106,6 +106,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 startActivity(intent);
                 return true;
 
+            case R.id.rec_temps_button:
+                // User chose the "Rec Internal Temps" button, shows temps...
+                intent = new Intent(this, InternalTempsActivity.class);
+                startActivity(intent);
+                return true;
+
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.

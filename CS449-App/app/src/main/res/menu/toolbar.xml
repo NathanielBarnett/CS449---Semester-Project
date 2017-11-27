@@ -4,13 +4,18 @@
 
     <!-- About button, shows info about the app-->
     <item
+        android:id="@+id/rec_temps_button"
+        android:title="Rec. Internal Temps"
+        android:icon="@drawable/internal_temps_pic"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/about_button"
         android:icon="@drawable/info_art"
         android:title="@string/about_string"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
     <item
         android:id="@+id/temp_button"
         android:icon="@drawable/temp_button"
         android:title="@string/temp_string"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
 </menu>
