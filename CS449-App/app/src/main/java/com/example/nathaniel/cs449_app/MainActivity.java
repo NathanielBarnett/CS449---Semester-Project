@@ -16,6 +16,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import com.example.nathaniel.cs449_app.VConverter;
 
+import static com.example.nathaniel.cs449_app.TempConverter.Round;
+
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     //Setting Spinner boolean values
@@ -71,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 try {
                     input_Val = Double.parseDouble(start_string.getText().toString());
                     converted_val = converter_wrapper(input_Val);
-                    result_view.setText(String.valueOf(converted_val));
+                    result_view.setText(String.valueOf(Round(converted_val, 2)));
                 }
                 catch (NumberFormatException exc) {
                     result_view.setText(String.valueOf(0));

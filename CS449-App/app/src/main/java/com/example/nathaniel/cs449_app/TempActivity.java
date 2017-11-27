@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import static android.R.id.content;
 import static com.example.nathaniel.cs449_app.R.id.textView;
+import static com.example.nathaniel.cs449_app.TempConverter.Round;
 
 /**
  * Created by Nathaniel on 9/24/2017.
@@ -82,6 +83,7 @@ public class TempActivity extends AppCompatActivity implements AdapterView.OnIte
                 EditText start_string = (EditText) findViewById(R.id.starting_val_temp);
                 TextView result_view = (TextView) findViewById(R.id.result_temp_view);
 
+                input_Val = Double.parseDouble(start_string.getText().toString());
                 // Set up flags for starting ending units
                 if (start_temp) {
                     choice = 0;
@@ -100,7 +102,7 @@ public class TempActivity extends AppCompatActivity implements AdapterView.OnIte
                     }
 
                     converted_val = temp_converter_wrapper(choice, input_Val);
-                    result_view.setText(String.valueOf(converted_val));
+                    result_view.setText(String.valueOf(Round(converted_val, 2)));
                 }
                 else {
                     result_view.setText(String.valueOf(input_Val));
@@ -134,6 +136,7 @@ public class TempActivity extends AppCompatActivity implements AdapterView.OnIte
                     default:
                         break;
                 }
+                break;
             case R.id.result_temp_spinner:
                 switch (pos) {
                     case 0: // first option in spinner
@@ -149,6 +152,7 @@ public class TempActivity extends AppCompatActivity implements AdapterView.OnIte
                     default:
                         break;
                 }
+                break;
 
         }
     }
