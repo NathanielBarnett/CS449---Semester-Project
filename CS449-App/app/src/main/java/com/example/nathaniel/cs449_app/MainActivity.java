@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             result_lbs = false,  result_pint = false, result_quart = false,  result_gallon = false;
 
     //Setting convert buttons
-    Button mConvertButton, mPrevConvertButton;
+    Button mConvertButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         //assigning Buttons
         mConvertButton = (Button) findViewById(R.id.convert_button);
-        mPrevConvertButton = (Button) findViewById(R.id.prev_convert_button);
 
         mConvertButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -126,11 +125,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         // An item was selected. Retrieve the selected item using
         // parent.getItemAtPosition(pos)
         // Identical switch cases are simply for proof of concept.
-        TextView result_string, start_string;
 
-
-        result_string = (TextView) findViewById(R.id.result_val_test);
-        start_string = (TextView) findViewById(R.id.start_val_test);
+        //result_string = (TextView) findViewById(R.id.result_val_test);
+        //start_string = (TextView) findViewById(R.id.start_val_test);
         // Switch case determining which spinner was clicked
         switch (parent.getId()) {
             case R.id.starting_val_spinner:
@@ -140,42 +137,34 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     case 0: // first option in spinner
                         reset_bools("start");
                         start_tsp = true;
-                        start_string.setText("0");
                         break;
                     case 1: // second option in spinner
                         reset_bools("start");
                         start_tbsp = true;
-                        start_string.setText("1");
                         break;
                     case 2: // third option in spinner
                         reset_bools("start");
                         start_oz = true;
-                        start_string.setText("2");
                         break;
                     case 3:
                         reset_bools("start");
                         start_lbs = true;
-                        start_string.setText("3");
                         break;
                     case 4:
                         reset_bools("start");
                         start_cup = true;
-                        start_string.setText("4");
                         break;
                     case 5:
                         reset_bools("start");
                         start_pint = true;
-                        start_string.setText("5");
                         break;
                     case 6:
                         reset_bools("start");
                         start_quart = true;
-                        start_string.setText("6");
                         break;
                     case 7:
                         reset_bools("start");
                         start_gallon = true;
-                        start_string.setText("7");
                         break;
                     default:
                         break;
@@ -190,42 +179,34 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     case 0: // first option in spinner
                         reset_bools("result");
                         result_tsp = true;
-                        result_string.setText("0");
                         break;
                     case 1: // second option in spinner
                         reset_bools("result");
                         result_tbsp = true;
-                        result_string.setText("1");
                         break;
                     case 2: // third option in spinner
                         reset_bools("result");
                         result_oz = true;
-                        result_string.setText("2");
                         break;
                     case 3:
                         reset_bools("result");
                         result_lbs = true;
-                        result_string.setText("3");
                         break;
                     case 4:
                         reset_bools("result");
                         result_cup = true;
-                        result_string.setText("4");
                         break;
                     case 5:
                         reset_bools("result");
                         result_pint = true;
-                        result_string.setText("5");
                         break;
                     case 6:
                         reset_bools("result");
                         result_quart = true;
-                        result_string.setText("6");
                         break;
                     case 7:
                         reset_bools("result");
                         result_gallon = true;
-                        result_string.setText("7");
                         break;
                     default:
                         break;

@@ -83,7 +83,11 @@ public class TempActivity extends AppCompatActivity implements AdapterView.OnIte
                 EditText start_string = (EditText) findViewById(R.id.starting_val_temp);
                 TextView result_view = (TextView) findViewById(R.id.result_temp_view);
 
-                input_Val = Double.parseDouble(start_string.getText().toString());
+                try {
+                    input_Val = Double.parseDouble(start_string.getText().toString());
+                } catch (NumberFormatException exc) {
+                    result_view.setText(String.valueOf(0));
+                }
                 // Set up flags for starting ending units
                 if (start_temp) {
                     choice = 0;
@@ -97,7 +101,7 @@ public class TempActivity extends AppCompatActivity implements AdapterView.OnIte
                 if (result_temp != start_temp) {
                     try {
                         input_Val = Double.parseDouble(start_string.getText().toString());
-                    } catch (NumberFormatException exc) {
+                    } catch (NumberFormatException exc ) {
                         result_view.setText(String.valueOf(0));
                     }
 
