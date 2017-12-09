@@ -129,13 +129,9 @@ public class TempActivity extends AppCompatActivity implements AdapterView.OnIte
                 switch (pos) {
                     case 0: // first option in spinner
                         start_temp = true;
-                        result_string = (TextView) findViewById(R.id.result_val_view);
-//                  result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
                         break;
                     case 1: // second option in spinner
                         start_temp = false;
-                        result_string = (TextView) findViewById(R.id.result_val_view);
-//                  result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
                         break;
                     default:
                         break;
@@ -145,13 +141,9 @@ public class TempActivity extends AppCompatActivity implements AdapterView.OnIte
                 switch (pos) {
                     case 0: // first option in spinner
                         result_temp = true;
-                        result_string = (TextView) findViewById(R.id.result_val_view);
-//                  result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
                         break;
                     case 1: // second option in spinner
                         result_temp = false;
-                        result_string = (TextView) findViewById(R.id.result_val_view);
-//                  result_string.setText(String.valueOf(parent.getItemAtPosition(pos)));
                         break;
                     default:
                         break;
