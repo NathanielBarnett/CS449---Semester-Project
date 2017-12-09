@@ -26,11 +26,12 @@
     <string name="temp_menu_title">Recommended Internal Temperatures</string>
 
     <string name="rec_internal_temps">
-        Ground Meats: Minimum of 160 °F \n
+        Ground Meats: \n
+        Minimum of 160 °F \n
         Fresh Meat Cuts: \n
-        Minimum of 145 °F for Rare \n
-        160 °F for Medium, and 170 °F for Well Done. \n
+        Minimum of 145 °F for Rare, \n
+        160 °F for Medium, \n and 170 °F for Well Done. \n
         Poultry and Game Birds: \n
-        Minimum 165 °F, for ground or whole portions.
+        Minimum 165 °F, for ground \n or whole portions.
     </string>
 </resources>
